@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+    <title>Hinari Shimada's Portfolio</title>
+    <!--<link rel="icon" href="favicon.ico">-->
+    
+    <style>
+      body {
+        font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+        background-color: white;
+      }
+      .header {
+        background-color: whitesmoke;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 0;
+        display: none;
+      }
+      .header-img {
+        width: 65px;
+        height: 65px;
+      }
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .navbar a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 30px;
+        border-radius: 5px;
+      }
+      .navbar a:hover {
+        background-color: #f38d43d5;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .intro {
+        position: relative;
+        background: url('blue.jpg') no-repeat center center;
+        background-size: cover;
+        height: 30vh;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .intro::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+      .intro .img {
+        position: relative;
+        z-index: 2;
+        color: white;
+        width: 400px;
+        height: 400px;
+        margin-right: 30px;
+        flex: 3;
+      }
+      .intro .text {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding: 50px 0;
+        flex: 7;
+        text-align: center;
+      }
+      .profile_img{
+        width: 230px;
+        height: 300px;
+        z-index: 2;
+      }
+      .border{
+        position: relative;
+        background-color: whitesmoke;
+        height: 10px;
+        z-index: 1;
+      }
+      .border .text{
+        text-align: center;
+        color: black;
+        z-index: 2;
+      }
+      .section-title {
+        text-align: left;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .content {
+        margin-bottom: 5px;
+      }
+      .content_profile {
+        margin-bottom: 5px;
+      }
+      .container {
+        position: relative;
+        z-index: 1;
+        width: 75% !important;
+      }
+      ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        font-size: 20px;
+        line-height: 2.0;
+      }
+      ul ul {
+        list-style-type: circle;
+        margin-left: 20px;
+        font-size: 18px;
+        line-height: 2.0;
+      }
+      ul ul ul{
+        list-style-type: circle;
+        margin-left: 20px;
+        font-size: 17px;
+        line-height: 2.0;
+      }
+      .moji{
+        font-size: 15px;
+      }
+      .content p {
+        font-size: 18px;
+        text-indent: 2em;
+        line-height: 2.0;
+      }
+      .content_profile p {
+        font-size: 18px;
+        line-height: 2.0;
+      }
+      .content_profile img{
+        border-radius: 15px;
+      }
+      .bottom{
+        position: relative;
+        background-color: rgb(58, 56, 56);
+        height: 80px;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+      }
+      .bottom .text{
+        text-align: center;
+        color: white;
+        z-index: 2;
+        padding: 8px 0;
+      }
+      h1 {
+        text-align: center;
+        font-size: 48px;
+      }
+      h2 {
+        position: relative;
+        padding: 1rem 1.5rem;
+        border-bottom: 6px solid rgb(211, 127, 18);
+      }
+
+      h2:before {
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 20%;
+        height: 6px;
+        content: '';
+        background: #e0bf03;
+      }
+      .profile_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 250h;
+      }
+      .balloon {
+        position: relative;
+        display: inline-block;
+        margin: 1.5em 0 1.5em 15px;
+        padding: 7px 10px;
+        min-width: 120px;
+        max-width: 100%;
+        color: black;
+        font-size: 13px;
+        background: #FFF;
+        border: solid 3px rgb(211, 127, 18);
+        box-sizing: border-box;
+        margin-left: 100px;
+        border-radius: 15px;
+        z-index: 2;
+      }
+
+      .balloon:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -24px;
+        margin-top: -12px;
+        border: 12px solid transparent;
+        border-right: 12px solid white;
+        z-index: 2;
+      }
+      .balloon:after{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        margin-top: -14px;
+        border: 14px solid transparent;
+        border-right: 14px solid rgb(211, 127, 18);
+        z-index: 1;
+      }
+
+      .balloon p {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container-fluid d-grid gap-3 align-items-center d-flex">
+        <img src="one.jpg" class="card-img-top img-responsive image me-auto p-2 rounded-circle header-img">
+        <nav class="navbar">
+          <a href="#home">Top</a>
+          <a href="#profile">Profile</a>
+          <a href="#research">Research</a>
+          <a href="#experience">Experience</a>
+        </nav>
+      </div>
+    </header>
+    <div id="home" class="intro">
+      <div class="row row-cols-2 mb-3 text-center mr-1 w-75">
+        <!--<div class="img">
+          <img src="maccha.jpg" class="profile_img">
+        </div>         --> 
+        <div class="text"> 
+          <h1>Hinari Shimada's Portfolio</h1>
+          <!--<h3>Hinari Shimada</h3>
+          <h3>島田 比奈理</h3>
+          <p>東京工業大学大学院 情報理工学院 情報工学系 知能情報コース 修士課程1年</p>-->
+        </div>
+          
+      </div>
+    </div>
+
+
+    <main role="main" class="container">
+
+      <section class="content_profile" id="profile">
+        <div class="profile_container">  
+          <div class="img">
+            <img src="maccha.jpg" class="profile_img">
+          </div>        
+          <div class="balloon">
+            <p>&emsp;東京工業大学 情報理工学院 修士課程1年の島田比奈理です。<br>
+              &emsp;学部研究では、大規模言語モデル(LLM)の急速な普及により学生が作成した授業課題等の著作物がLLMによって作成されたものと疑われることで、
+              公正な評価に影響を与えることに注目し、LLMが生成した文章と人間が記述した文章の判別に関する研究を行いました。<br>
+              &emsp;大学院では、研究活動を通して、人間が大規模言語モデルから生成した文章を活用するときに文章の安全性を判定し、人間の判断の手助けをしたいと考えています。
+              現在は、学部研究の経験を生かし、Prompt InjectionやHallucination等の文章の安全性に関する研究を行う予定です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section class="content" id="research">
+        <h2 class="section-title">Research Interest</h2>
+        <ul>
+          <li>大規模言語モデルが生成した文章と人間が記述した文章の判別</li>
+          <li>大規模言語モデルの安全性</li>
+            <ul>
+              <li>Jailbreak, Prompt Injection</li>
+              <li>Machine Unlearning, モデルの知識忘却</li>
+              <li>Hallucination</li>
+            </ul>
+        </ul>
+      </section>
+
+      <section class="content text">
+        <h2 class="section-title">Research Activities</h2>
+        <ul>
+          <li>論文</li>
+            <ul>
+              <li>ジャーナル論文</li>
+                <ul>
+                  <li>Hinari Shimada, Masaomi Kimura. A Method for Distinguishing Model Generated Text and Human Written Text. 
+                    Journal of Advances in Information Technology (JAIT), Vol. 15, No. 6, 2024.</li>
+                </ul>
+              <!--
+              <li>International Conference</li>
+              <li>Domestic Conference</li>
+                <ul>
+                  <li>島田 比奈理, 木村昌臣. モデル生成文判別手法の日本語文への適用. 2024年電子情報通信学会総合大会, 2024.</li>
+                </ul>
+              -->
+            </ul>
+          <li>口頭発表</li>
+            <ul>
+              <li>国際学会</li>
+                <ul>
+                  <li>Hinari Shimada, Masaomi Kimura. A Method for Distinguishing Model Generated Text and Human Written Text.
+                    <br>2024 9th International Conference on Intelligent Information Technology (ICIIT 2024), February 2024.
+                </ul>
+              <li>国内学会</li>
+                <ul>
+                  <li>島田 比奈理, 木村昌臣. モデル生成文判別手法の日本語文への適用. 2024年電子情報通信学会総合大会, 2024年3月.</li>
+                </ul>
+            </ul>
+          <li>受賞</li>
+            <ul>
+              <li>BEST PRESENTATION AWARD, 2024 9th International Conference on Intelligent Information Technology (ICIIT 2024)</li>
+            </ul>
+        </ul>
+      </section>
+
+      <section id="experience" class="content">
+        <h2 class="section-title">Work Experiences</h2>
+        <ul>
+          <li>2022年9月  &emsp;&emsp;&emsp; 株式会社レコチョク&emsp;2daysハッカソンインターン</li>
+          <ul>
+            <li class="moji">好きな音楽を聴いている人同士を繋ぐチャットアプリの開発を行いました。私は、主にフロンドエンドの開発を担当しました。ハッカソン初心者だったためとても苦労しましたが、とても良い経験になりました。</li>
+          </ul>
+          <li>2022年8月  &emsp;&emsp;&emsp; 株式会社BIPROGY&emsp;AIEngineer/Data Scientist 5DAYS INTERNSHIP 2022 </li>
+          <ul>
+            <li class="moji">実際に課題解決を行なった事例に対して技術選定や実証実験で得た座標データを用いてデータ分析を行い、結果から課題解決のための提案の実施までの一連の業務を経験しました。本インターンシップは対面で実施され、5人チームでチーム開発を行ないました。</li>
+          </ul>
+        </ul>
+      </section>
+
+      <section class="content">
+        <h2 class="section-title">Education</h2>
+        <ul>
+          <li>2024年4月 - 現在 &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;  修士課程 &emsp;&emsp;&emsp; 東京工業大学 情報理工学院 情報工学系 知能情報コース</li>
+          <li>2021年4月 - 2024年3月 &emsp;&emsp;&emsp; 学士課程 &emsp;&emsp;&emsp; 芝浦工業大学 工学部 情報工学科 （2年次転学部）</li>
+          <li>2020年4月 - 2021年3月 &emsp;&emsp;&emsp; 学士課程 &emsp;&emsp;&emsp; 芝浦工業大学 システム理工学部 数理科学科</li>
+        </ul>
+      </section>
+
+      <section class="content">
+        <h2 class="section-title">Qualifications</h2>
+        <ul>
+          <li>2022年7月 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;JDLA Deep Learning for GENERAL 2022#2 合格</li>
+          <li>2022年6月 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;基本情報技術者試験 合格</li>
+        </ul>
+      </section>
+
+      <section class="content">
+        <h2 class="section-title">Others</h2>
+        <ul>
+          <li>2024年3月 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;創立者有元史郎記念賞 受賞 （芝浦工業大学）</li>
+          <li>2021年4月 - 2024年3月 &emsp;&emsp;&emsp; 芝浦工業大学 育英奨学金 </li>
+        </ul>
+      </section>
+    </main>
+
+    <div class="bottom">
+      <div class="text">
+        <h5>Contact</h5>
+        <p>Email : hinari.shimada[at]nlp[dot]c.titech.ac.jp</p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 100 ) { 
+          header.style.display = 'block';
+        } else {
+          header.style.display = 'none';
+        }
+      });
+    </script>
+
+  </body>
+</html>
